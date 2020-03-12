@@ -1,6 +1,8 @@
+# Version 2.2.4
+
 # WP Maintenance Mode
 
-Adds a splash page to your site that lets visitors know your site is down for maintenance. It's perfect for a coming soon page.
+Adds a splash page to your site that lets visitors know your site is down for maintenance. It's perfect for a coming soon page. The new Bot functionality is here!
 
 **Features**
 
@@ -16,12 +18,12 @@ Adds a splash page to your site that lets visitors know your site is down for ma
 * Works with any WordPress theme;
 * SEO options;
 * Exclude URLs from maintenance.
+* Bot functionality to collect the emails in a friendly and efficient way.
+* GDPR Ready
 
 **Credits**
 
-Developed by [Designmodo](http://designmodo.com)
-
-WordPress Theme: [Startup Framework for WordPress](http://designmodo.com/startup-wordpress/)
+Developed by [Designmodo](https://designmodo.com) & [StrictThemes – WordPress Themes](http://strictthemes.com/)
 
 ## F.A.Q.
 
@@ -65,7 +67,7 @@ We deleted a bot from list and added a new one.
 
 ```php
 function new_text($text) {
-    $text = str_replace('http://www.designmodo.com', 'http://designmodo.com', $text);
+    $text = str_replace('https://www.designmodo.com', 'https://designmodo.com', $text);
     
 
     return $text;
@@ -99,7 +101,7 @@ WP Maintenance Mode can be unstable due the cache plugins, we recommend to deact
 Good news, this plugin is free for everyone! Since it's released under the GPL, you can use it free of charge on your personal or commercial blog.
 
 ### Translations
-The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin to your language, please have a look at the .pot file which contains all defintions and may be used with a [gettext](http://www.gnu.org/software/gettext/) editor like [Poedit](http://www.poedit.net/) (Linux, Mac OS X, Windows).
+The plugin comes with various translations, please refer to the [WordPress Codex](http://codex.wordpress.org/Installing_WordPress_in_Your_Language "Installing WordPress in Your Language") for more information about activating the translation. If you want to help to translate the plugin in your language, please use the [translation tool](https://translate.wordpress.org/projects/wp-plugins/wp-maintenance-mode) (*Stable* branch) provided by WordPress.org.
 
 ### Contact & Feedback
 Please let me know if you like the plugin or you hate it or whatever... Please fork it, add an issue for ideas and bugs.

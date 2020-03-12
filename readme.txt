@@ -1,22 +1,24 @@
 === WP Maintenance Mode ===
-Contributors: Designmodo, GeorgeJipa
+Contributors: Designmodo, impresshq
 Plugin Name: WP Maintenance Mode
-Plugin URI: http://designmodo.com/
+Plugin URI: https://designmodo.com/
 Author: Designmodo
-Author URI: http://designmodo.com/
+Author URI: https://designmodo.com/
 Tags: maintenance mode, admin, administration, unavailable, coming soon, multisite, landing page, under construction, contact form, subscribe, countdown
 Requires at least: 3.5
-Tested up to: 4.0.0
-Stable tag: 2.0.3
+Tested up to: 5.3
+Stable tag: trunk
+Requires PHP: 5.6
 License: GPL-2.0+
 
-Adds a splash page to your site that lets visitors know your site is down for maintenance. It's perfect for a coming soon page.
+Adds a splash page to your site that lets visitors know your site is down for maintenance. It's perfect for a coming soon page. The new Bot functionality is here!
 
 == Description ==
 
 Add a maintenance page to your blog that lets visitors know your blog is down for maintenance, or add a coming soon page for a new website. User with admin rights gets full access to the blog including the front end.
 
 Activate the plugin and your blog is in maintenance-mode, works and only registered users with enough rights can see the front end. You can use a date with a countdown timer for visitor information or set a value and unit for information. 
+
 Also works with WordPress Multisite installs (each blog from the network has it's own maintenance settings).
 
 = Features =
@@ -32,16 +34,17 @@ Also works with WordPress Multisite installs (each blog from the network has it'
 * Social media icons;
 * Works with any WordPress theme;
 * SEO options;
-* Exclude URLs from maintenance.
+* Exclude URLs from maintenance;
+* Bot functionality to collect the emails in a friendly and efficient way.
+* GDPR Ready
 
 = Bugs, technical hints or contribute =
 
 Please give us feedback, contribute and file technical bugs on [GitHub Repo](https://github.com/Designmodocom/WP-Maintenance-Mode).
 
 = Credits =
-Developed by [Designmodo](http://designmodo.com)
 
-WordPress Theme: [Startup Framework for WordPress](http://designmodo.com/startup-wordpress/)
+Developed by [Designmodo](https://designmodo.com) & [StrictThemes – WordPress Themes](http://strictthemes.com/)
 
 == Installation ==
 
@@ -52,12 +55,14 @@ WordPress Theme: [Startup Framework for WordPress](http://designmodo.com/startup
 
 == Screenshots ==
 
-1. Maintenance Mode example
-2. Maintenance Mode example #2
-3. Contact form
-4. Dashboard General settings
-5. Dashboard Design settings
-6. Dashboard Modules settings
+1. Maintenance Mode Example
+2. Maintenance Mode Example #2
+3. Bot Example
+4. Dashboard General Settings
+5. Dashboard Design Settings
+6. Dashboard Modules Settings
+7. Dashboard Bot Settings
+8. Contact Form
 
 == Frequently Asked Questions ==
 
@@ -71,6 +76,107 @@ WP Maintenance Mode can be unstable due the cache plugins, we recommend to deact
 If you change your login url, please add the new slug (url: http://domain.com/newlogin, then you should add: newlogin) to Exclude list from plugin settings -> General Tab.
 
 == Changelog ==
+
+= 2.X.X (XX/XX/2020) =
+* enable media_buttons on wp_editor ("Design > Text")
+* add filters for capabilities: `wpmm_settings_capability`, `wpmm_subscribers_capability`, and `wpmm_all_actions_capability` (the last one can be used to override all capabilities)
+* bump "Tested up to" WP v5.3
+
+= 2.2.4 (20/05/2019) =
+* bump "Tested up to" to 5.2.0
+* fix typo in Italian translation (it_IT)
+* Bot: add a note about how you can export the list of subscribers [#195](https://github.com/Designmodocom/WP-Maintenance-Mode/issues/195)
+* Bot: add client-side sanitization to the input fields [#176](https://github.com/Designmodocom/WP-Maintenance-Mode/issues/176)
+
+= 2.2.3 (20/02/2019) =
+* bump "Tested up to" version to 5.1.0
+* replace "wpmu_new_blog" action with "wp_initialize_site" action for WP 5.1.0 users because the first one is deprecated in the new version
+* small improvement to "check_exclude" method from "WP_Maintenance_Mode" class
+
+= 2.2.2 (27/11/2018) =
+* Google Analytics module: migrate from analytics.js to gtag.js + add ip anonymization [#178](https://github.com/Designmodocom/WP-Maintenance-Mode/issues/178)
+* GDPR module: accept links inside texareas + add policy link target [#188](https://github.com/Designmodocom/WP-Maintenance-Mode/issues/188)
+* add charset meta tag [#200](https://github.com/Designmodocom/WP-Maintenance-Mode/issues/200)
+* fix PHP Notice:  Undefined index: HTTP_USER_AGENT
+* add plural and single form translation for subscribers number (settings page)
+
+= 2.2.1 (13/07/2018) =
+* replace create_function; solves [#186](https://github.com/Designmodocom/WP-Maintenance-Mode/issues/186) issue and [ticket](https://wordpress.org/support/topic/create_function-deprecated-in-php-7-2-8/) (thanks @ [George Jipa](https://github.com/georgejipa))
+* solve "set options on first activation" bug [ticket](https://wordpress.org/support/topic/notice-undefined-index-general-in-srv-www-mysite-test-current/) (thanks @ [George Jipa](https://github.com/georgejipa))
+* make (frontend) privacy labels clickable (thanks @ [George Jipa](https://github.com/georgejipa))
+* added array key check to avoid notice (thanks @ [Smiggel](https://github.com/Smiggel))
+* added instagram icon (thanks @ [bozdoz](https://github.com/bozdoz))
+
+= 2.2 (25/05/2018) =
+* added GDPR feature
+
+= 2.1.2 (04/03/2018) =
+* fixed a bug that was breaking the plugin after updating from 2.0.9 to 2.1.1
+
+= 2.1.1 (01/03/2018) =
+* fixed a visual bug with wrap container
+* added internationalization support for bot fixed strings
+* fixed path for loading data.js required for the bot (thanks @ [George Jipa](https://github.com/georgejipa))
+* added `wpmm_before_scripts` hook, fires just before loading the scripts
+* moved data.js to uploads directory (thanks @ [George Jipa](https://github.com/georgejipa))
+
+= 2.1 (27/02/2018) =
+* added bot feature
+* css fixes
+* new css transitions for buttons
+* fixed https problem (thanks @ [George Jipa](https://github.com/georgejipa))
+* updated translations, help us! :)
+
+= 2.0.9 (29/11/2016) = 
+* new hook (`wpmm_after_body`) in maintenance mode template (thanks @ [Karolína Vyskočilová](https://github.com/vyskoczilova))
+* pt_PT (portuguese) language update (thanks @ [Pedro Mendonça](https://github.com/pedro-mendonca))
+* maintenance mode template can also be loaded from theme/child-theme folder (thanks @ [Florian Tiar](https://github.com/Mahjouba91) and [Lachlan Heywood](https://github.com/lachieh))
+* new hooks for contact form (if you want to add new fields): `wpmm_contact_form_start`, `wpmm_contact_form_before_message`, `wpmm_contact_form_after_message`, `wpmm_contact_form_end`
+* new hook for contact form validation (if you want to validate new fields): `wpmm_contact_validation`
+* new hooks for contact form template (if you want to display new fields): `wpmm_contact_template_start`, `wpmm_contact_template_before_message`, `wpmm_contact_template_after_message`, `wpmm_contact_template_end`
+* some javascript improvements
+* small css fix for contact form (thanks @ [frontenddev](https://wordpress.org/support/topic/please-fix-modal-window-of-contact-form/))
+
+= 2.0.8 (09/09/2016) = 
+* add wp_scripts() function (in helpers.php) to maintain backward compatibility (for those with WP < 4.2.0)
+* css fix for subscribe button on maintenance page
+* fix multisite administrator access issue
+* pt_PT (portuguese) language update (thanks @ Pedro Mendonça)
+* new hooks for Contact module: `wpmm_contact_template`, `wpmm_contact_subject`, `wpmm_contact_headers`
+* jQuery (google cdn) path fix when SCRIPT_DEBUG is true
+
+= 2.0.7 (06/07/2016) =
+* reset_settings _wpnonce check (thanks # Wordfence)
+* modules > google analytics code sanitization (thanks @ Wordfence)
+* move sidebar banners from our servers to plugin folder... as WordPress staff requested
+* Subscribe button error on Mobile version (thanks @ Hostílio Thumbo)
+* replace $wp_scripts global with wp_scripts() function
+* de_DE language file update (thanks @ tt22tt)
+
+= 2.0.6 (20/06/2016) =
+* notifications update
+* languages update
+
+= 2.0.5 (17/06/2016) =
+* roles (array) fix
+
+= 2.0.4 (17/06/2016) =
+* fixed issue: responsive subscribe form
+* fixed issue: jQuery was loaded from a different folder on some WP installations
+* fixed issue: errors after update (strstr on empty strings because of saving empty lines on exclude list)
+* fixed issue: if "Redirection" from "General" tab is active, also redirects ajax calls
+* fixed issue: settings page title was wrong placed
+* "contact" feature update - nice email template + reply-to email header
+* refactoring for some methods
+* all assets are now minified
+* rewrite count db records function (used on subscribers count)
+* compatible with https://github.com/afragen/github-updater
+* compatible with wp-cli http://wp-cli.org/
+* improved responsivity
+* improved roles access; now you can set multiple roles (editor, author, subscriber, contributor) and administrator will always have access to backend and frontend
+* it_IT translation by benedettogit (https://github.com/benedettogit)
+* updated all language files (need help for 100% translation)
+
 
 = 2.0.3 (07/10/2014) =
 * WP_Super_Cache issue was fixed
@@ -109,7 +215,7 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 
 = 2.0.0 (01/09/2014) =
 * Changed design and functionality, new features
-* Changed multisite behaviour: now you can activate maintenance individually (each blog from the network has it's own maintenance settings) 
+* Changed multisite behavior: now you can activate maintenance individually (each blog from the network has it's own maintenance settings) 
 * Removed actions: `wm_header`, `wm_footer`, `wm_content`
 * Removed filters: `wm_header` 
 * Removed [loginform] shortcode
@@ -124,7 +230,7 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 - `wpmm_backtime` - can be used to change the backtime from page header
 - `wpmm_meta_robots` - can be used to change `Robots Meta Tag` option (from General)
 - `wpmm_text` - can be used to change `Text` option (from Design > Content)
-- `wpmm_scripts` - can be used to embed new javascripts files
+- `wpmm_scripts` - can be used to embed new javascript files
 - `wpmm_styles` - can be used to embed new css files
 - `wpmm_search_bots` - if you have `Bypass for Search Bots` option (from General) activated, it can be used to add new bots (useragents)
 * Removed themes and now we have a "Design" & "Modules" tabs, where the look and functionality of the maintenance page can be changed as you need
@@ -133,7 +239,7 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 * Switch to new owner, contributor
 
 = 1.8.11 (07/25/2013) =
-* Fixes for php notices in scrict mode
+* Fixes for php notices in strict mode
 * Alternative for check url, if curl is not installed
 
 = 1.8.10 (07/18/2013) =
@@ -183,7 +289,7 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 * Fix for include JS in frontend to use countdown
 * Small mini fix for a php notice
 * Add charset on spalsh page for strange databases
-* Enhanced default exclude adresses
+* Enhanced default exclude addresses
 * Add shortcode `[loginform]` for easy use a login form in splash page
 * Test with WordPress 3.5
  
@@ -204,8 +310,8 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 = 1.8.0 =
 * Include all scripts in backend via function
 * Update datepicker and countdown js
-* Supportet IP as exclude for see the frontend
-* Add support for flish cache od WP Super Cache and W3 Total Cache plugins
+* Supported IP as exclude for see the frontend
+* Add support for flush cache of WP Super Cache and W3 Total Cache plugins
 * Fix for changes in WP 3.3 Multisite
 
 = 1.7.1 (12/05/2011) =
@@ -231,7 +337,7 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 * Bugfix: new check for files for different themes; hope this fix the server errors
 * Bugfix: fix add default settings
 * Maintenance: different changes on the syntax
-* Feature: add check for Super Admin on WP Multisite; has allways the rights for access
+* Feature: add check for Super Admin on WP Multisite; has always the rights for access
 * Feature: now it is possible to exclude feed from maintenance mode
 * Maintenance: check with 3.0.4 and 3.1-RC2
 * Maintenance: update language file: .pot, de_DE
@@ -247,7 +353,7 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 
 = 1.6.5 (09/16/2010) =
 * add new design "Chemistry" by [elmastudio.de](http://www.elmastudio.de/ "elmastudio.de")
-* changes for include methods od class for preview
+* changes for include methods of class for preview
 * changes the possibility for include of language specific flash files
 
 = 1.6.4 (09/13/2010) =
@@ -296,17 +402,17 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 = 1.5.4 (02/23/2010) =
 * add time for countdown
 * changes for WP 3.0
-* changees on rights to see frontend
+* changes on rights to see frontend
 
 = 1.5.3 (01/05/2010) =
 * Fix for JavaScript with WordPress 2.9
 * Add new custom fields for fronted: title, header, heading
 * Fix for setting userrole to see frontend
-* Change laguage files
+* Change language files
 
 = 1.5.2 (01/04/2010) =
 * add user-role setting
-* correctly the de_DE language file
+* corrected the de_DE language file
 
 = 1.5.1 (10/04/2009) =
 * add small fix
@@ -316,7 +422,7 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 * add countdown
 * change options
 * change default options
-* add field for own adress to excerpt of the maintenance mode
+* add field for own address to excerpt of the maintenance mode
 * etc.
 
 = 1.4.9 (07/09/2009) =
@@ -334,12 +440,12 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 = v1.4.6 (24/08/2009) =
 * add design "Animate (Flash)" by [Sebastian Schmiedel](http://www.cayou-media.de/ "Sebastian Schmiedel")
 * add new hook for add content `wm_content` to include flash on content
-* add frensh language files
+* add french language files
 
 = v1.4.5 (19/08/2009) =
 * fix html string in text on frontend
 * add design "Paint" by [Marvin Labod](http://bugeyes.de/ "Marvin Labod")
-* add turkey language files
+* add turkish language files
 
 = v1.4.4 (18/08/2009) =
 * add design "Chastely" by [Florian Andreas Vogelmaier](http://fv-web.de/ "Florian Andreas Vogelmaier")
@@ -359,6 +465,6 @@ If you change your login url, please add the new slug (url: http://domain.com/ne
 * small html-fix
 
 = v1.4 (06/08/2009) =
-* complety new code
+* completely new code
 * options menu
 * new designs by [David Hellmann](http://www.davidhellmann.com/ "David Hellmann")

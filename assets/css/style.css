@@ -29,7 +29,7 @@ blockquote:before, blockquote:after, q:before, q:after {
     content: none;
 }
 input, button {
-    -webkit-appearance: none;
+    /* -webkit-appearance: none; */
     border-radius: 0;
 }
 table {
@@ -90,9 +90,15 @@ body {
     line-height: 45px;
     margin: 0 0 80px;
 }
+
+.wrap h2 img {
+    max-width: 100%;
+    height: auto;
+}
+
 .wrap h3 {
     font-size: 24px;
-    font-weight: 400px;
+    font-weight: 400;
     margin: 0 0 45px;
 }
 .wrap .author_link {
@@ -116,13 +122,42 @@ body {
 /**
  * SUBSCRIBE FORM
  **/
-
-.wrap form.subscribe_form {
-    width: 465px;
-    margin: 0 0 75px;
-    display: inline-block;
+.wrap div.subscribe_border {
     border: 3px solid #e0e0e0;
     box-sizing: border-box;
+    width: 450px;
+    display: inline-block;
+}
+.wrap form.subscribe_form {
+    /* box-sizing: border-box;
+    width: 450px; */
+    margin: 0 0 75px;
+    /* display: inline-block; */
+    /* border: 3px solid #e0e0e0; */
+    overflow: hidden;
+    text-align: center;
+}
+.wrap .subscribe_form .privacy_checkbox {
+    color: #909090;
+    max-width: 450px;
+    margin: 15px auto;
+    position: relative;
+}
+.wrap form.subscribe_form .privacy_checkbox label.error {
+    display: block !important;
+    position: absolute;
+    font-size: 11px;
+    left: 39%;
+}
+.wrap .subscribe_form .privacy_checkbox input {
+    float: none;
+    margin: 3px 4.7px;
+}
+.wrap .subscribe_form .privacy_tail {
+    font-size: 11px;
+    color: #909090;
+    max-width: 450px;
+    margin: 0 auto;
 }
 .wrap form.subscribe_form input {
     margin: 0;
@@ -143,6 +178,7 @@ body {
     cursor: pointer;
     padding: 20px 30px;
     border-left: 3px solid #e0e0e0;
+    transition: all .3s;
 }
 .wrap form.subscribe_form input[type="submit"]:hover {
     background: #fff;
@@ -217,6 +253,9 @@ body {
 .wrap .social .fb {
     background-position: -240px 0;
 }
+.wrap .social .instagram {
+    background-position: -707px 0;
+}
 .wrap .social .tw {
     background-position: -162px 0px;
 }
@@ -254,12 +293,12 @@ body {
     background: #000;
     color: #fff;
 }
-.contact_us {
-    text-decoration: none;
-}
+.contact_us { text-decoration: none; }
+.contact_us, input[type=submit] { transition: all .3s ease-in-out; }
 .contact {
     position: fixed;
     display: none;
+    overflow: auto;
     top: 0;
     bottom: 0;
     left: 0;
@@ -272,6 +311,13 @@ body {
     font-size: 11px;
     padding-top: 10px;
 }
+.close-contact_form {
+    position: absolute;
+    left: 46%;
+    top: -60px;
+    cursor: pointer;
+}
+.close-contact_form img { width: 40px; height: 40px; }
 .contact .form {
     width: 520px;
     text-align: center;
@@ -281,7 +327,9 @@ body {
     margin: 100px auto;
     transition: 0.2s transform ease-in-out;
 }
-.contact .form input, .contact .form textarea {
+.contact .form input[type=text],
+.contact .form input[type=submit],
+.contact .form textarea {
     padding: 15px 20px;
     margin: 0;
     outline: 0;
@@ -292,6 +340,28 @@ body {
     font-family: Helvetica Neue, Arial, sans-serif;
     box-sizing: border-box;
     resize: none;
+}
+.contact .form label#content-error { margin-bottom: 10px; }
+.contact .form .privacy_checkbox {
+    margin-top: 20px;
+    clear: both;
+    color: #909090;
+    font-size: 15px;
+    position: relative;
+}
+.contact .form .privacy_checkbox label#acceptance-error {
+    position: absolute;
+    top: 10px;
+    left: 39%;
+}
+.contact .form .privacy_checkbox input {
+    transform: translatey(-2px);
+}
+.contact .form .privacy_tail {
+    font-size: 11px;
+    color: #c7c7c7;
+    margin-top: 16px;
+    line-height: 14px;
 }
 .contact .form textarea {
     height: 175px;
@@ -389,6 +459,8 @@ body {
     color: #fff;
     border-color: #fff;
 }
+
+
 /**
  * MEDIA QUERIES (RESPONSIVE)
  **/
@@ -421,15 +493,20 @@ body {
     .wrap h2, .wrap h3 {
         font-size: 18px;
     }
-    .wrap form {
+    .wrap form.subscribe_form {
         box-sizing: border-box;
         width: 100%;
     }
-    .wrap form input {
+    .wrap form.subscribe_form input {
         box-sizing: border-box;
     }
     .wrap form input[type="text"], .wrap form input[type="submit"] {
-        width: 100%;
+        width: 100% !important;
+    }
+    .wrap form.subscribe_form input[type="submit"] {
+        padding-left: 0;
+        padding-right: 0;
+        border-left: none;
     }
     .wrap .contact_us {
         margin: 0 0 50px;
@@ -458,5 +535,11 @@ body {
     }
     blockquote, q {
         width: 70%;
+    }
+}
+@media only screen and (max-width: 465px) {
+    .contact .form .privacy_checkbox label#acceptance-error {
+        top: 28px;
+        left: 32%;
     }
 }
